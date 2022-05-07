@@ -1,0 +1,57 @@
+def drawCreatorMenu(screen, unit, mas):
+	counter = 0
+	for x in range(72, 700, unit):
+		for y in range(72, 514, unit):
+			if counter % 2 == 0:
+				color = (255, 255, 255)
+			else:
+				color = (50, 50, 50)
+			pygame.draw.rect(screen, color, (x, y, unit, unit))
+			counter += 1
+	pygame.draw.rect(screen, (122, 122, 122), (0, 0, 700, 72))
+	pygame.draw.rect(screen, (122, 122, 122), (0, 0, 72, 500))
+	pygame.draw.rect(screen, (122, 122, 122), (612, 0, 90, 500))
+	pygame.draw.rect(screen, (122, 122, 122), (0, 432, 700, 69))
+
+	for i in mas:
+		if i[2] == "'wall'" or i[2] == 'wall':
+			pygame.draw.rect(screen, (80, 80, 120), (i[0] * 36, i[1] * 36, 36, 36)) # (255, 127, 39)
+
+		elif i[2] == "'ball'" or i[2] == "'jumpingBall'" or i[2] == 'ball' or i[2] == 'jumpingBall':
+			pygame.draw.circle(screen, (0, 80, 120), (i[0] * 36 + 18, i[1] * 36 + 18), 8) # (63, 72, 204)
+
+		elif i[2] == "'spawnPoint'" or i[2] == "'checkPoint'" or i[2] == "'endPoint'" or  i[2] == 'spawnPoint' or i[2] == 'checkPoint' or i[2] == 'endPoint':
+			pygame.draw.rect(screen, (80, 225, 120), (i[0] * 36, i[1] * 36, 36, 36)) # (255, 127, 39)
+----------------------------------------------------------------------------------==========================================================
+	level += '.npy'
+	mas = np.load('levels/' + level).tolist()
+	mas2 = []
+	mas3 = []
+	i = 1
+	l = 1
+	while i < len(mas) - 1:
+		# print('this is', mas[i])
+		block = []
+		if mas[i] == '(':
+			block.append(int(mas[i + 1]))
+			print('this is', list(mas[i+4]))
+			block.append(int(mas[i + 4]))
+			if True:
+				l = 7
+				name = ''
+				while mas[i+l] != ')':
+					name += mas[i+l]
+					l += 1
+				block.append(name)
+			i += l - 1
+		mas2.append(block)
+		i += 1
+	i = 0
+	while i < len(mas2):
+		if mas2[i] != []:
+			mas3.append(mas2[i])
+		i += 1
+		print (mas3)
+	return mas3
+============================
+если ты это читаешь, знай, я это сделал, я закончил эту игру, и вней никогд не будет обнов, наверное.
